@@ -20,9 +20,9 @@ const AppFrame = ({children}) => {
             </AppBar>
             <Grid item
                 xs={12}
-                sm={11}
-                md={10}
-                lg={8}>
+                sm={12}
+                md={11}
+                lg={11}>
                     {children}
             </Grid>
         </Grid>

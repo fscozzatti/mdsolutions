@@ -1,12 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import GridHeader from './../GridHeader'
+import GridDetail from './../GridDetail'
 
-const ShowData = () => {
+const ShowData = ({data}) => {
+
+    const data2 = data && data.map((data, i) => {
+        return (
+          <div key={i}>
+            <GridDetail author={data.author} category={data.category} country={data.country} 
+             description={data.description} published_at={data.published_at} title={data.title} >
+            </GridDetail>
+          </div>
+        )
+      })
 
     return (
         <div>
             <GridHeader></GridHeader>
+            <div className="col-12">{ data2 }</div>
         </div>
     )
 }

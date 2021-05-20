@@ -10,7 +10,7 @@ const MainPage = ({data}) => {
     return (
         <AppFrame>
             <Paper elevation={3}>
-                <ShowData>
+                <ShowData data={data}>
                 </ShowData>
             </Paper>
         </AppFrame>
