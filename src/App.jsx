@@ -1,12 +1,23 @@
-import './App.css';
-import Button from '@material-ui/core/Button'
+import React from 'react'
+import { BrowserRouter as Router,
+  Switch, 
+  Route } from 'react-router-dom'
+import MainPage from './pages/MainPage'
+import NotFoundPage from './pages/NotFoundPage'
+
 
 function App() {
   return (
-    <div>
-      hola mundo
-      <Button> boton</Button>
-    </div>
+    <Router>
+      <Switch>
+          <Route exact path="/">
+              <MainPage />
+          </Route>      
+          <Route>
+              <NotFoundPage />
+          </Route>                                                           
+      </Switch>
+  </Router>
   );
 }
 
