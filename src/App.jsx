@@ -1,19 +1,22 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { BrowserRouter as Router,
   Switch, 
   Route } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import NotFoundPage from './pages/NotFoundPage'
+import useData from './hooks/useData'
 
 
 function App() {
-  const [data, setData] = useState([])
+  
+  const data = useData()
+  console.log(data)
 
   return (
     <Router>
       <Switch>
           <Route exact path="/">
-              <MainPage />
+              <MainPage data={data.data} />
           </Route>      
           <Route>
               <NotFoundPage />
