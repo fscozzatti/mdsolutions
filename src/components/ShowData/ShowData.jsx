@@ -7,7 +7,7 @@ const ShowData = ({data}) => {
 
     const data2 = data && data.map((data, i) => {
         return (
-          <div key={i}>
+          <div key={i} >
             <GridDetail author={data.author} category={data.category} country={data.country} 
              description={data.description} published_at={data.published_at} title={data.title} >
             </GridDetail>
@@ -18,8 +18,9 @@ const ShowData = ({data}) => {
     return (
         <div>
             <GridHeader></GridHeader>
-            <div className="col-12">{ data2 }</div>
+            { data2 }
         </div>
+
     )
 }
 

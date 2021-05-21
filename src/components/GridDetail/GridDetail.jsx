@@ -9,7 +9,8 @@ const GridDetail = ({author, category, country, description, published_at, title
     return (
         <div className="container-fluid">
             <div className="row">
-                <Grid container           
+                <Grid
+                container            
                 direction="row"
                 justify="flex-start"
                 alignItems="center">
@@ -34,16 +35,17 @@ const GridDetail = ({author, category, country, description, published_at, title
                 </Grid>
             </div>
         </div>
+
     )
 }
 
 GridDetail.propTypes = {
-    author: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    published_at: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    category: PropTypes.string,
+    country: PropTypes.string,
+    description: PropTypes.string,
+    published_at: PropTypes.string,
+    title: PropTypes.string,
 }
 
 export default GridDetail
