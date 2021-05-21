@@ -41,6 +41,6 @@ code {
   overflow: hidden;
 }
 
-.grid-striped .row:nth-of-type(odd) {
-  background-color: rgba(0,0,0,.05);
+li:nth-child(odd) {
+  background-color: #999;
 }

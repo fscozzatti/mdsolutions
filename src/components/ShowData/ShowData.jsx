@@ -1,26 +1,70 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import GridHeader from './../GridHeader'
-import GridDetail from './../GridDetail'
+import Table from '@material-ui/core/Table';
+import { withStyles } from '@material-ui/core/styles';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import FormatDate from './../FormatDate'
+
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+      backgroundColor: theme.palette.common.white,
+      color: theme.palette.common.black,
+    },
+    body: {
+      fontSize: 14,
+    },
+  }))(TableCell);
+  
+  const StyledTableRow = withStyles((theme) => ({
+    root: {
+      '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+      },
+    },
+  }))(TableRow);
+  
 
 const ShowData = ({data}) => {
 
-    const data2 = data && data.map((data, i) => {
-        return (
-          <div key={i} >
-            <GridDetail author={data.author} category={data.category} country={data.country} 
-             description={data.description} published_at={data.published_at} title={data.title} >
-            </GridDetail>
-          </div>
-        )
-      })
-
     return (
         <div>
-            <GridHeader></GridHeader>
-            { data2 }
+            <TableContainer>
+                <Table  className="" size="large">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>Author</StyledTableCell>
+                            <StyledTableCell align="center">Title</StyledTableCell>
+                            <StyledTableCell align="center">Description</StyledTableCell>
+                            <StyledTableCell align="center">Category</StyledTableCell>
+                            <StyledTableCell align="center">Published_at</StyledTableCell>
+                            <StyledTableCell align="center">Country</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {data.map((data, i) => (
+                        <StyledTableRow key={i}>
+                            <StyledTableCell component="th" scope="row">
+                                {data.author}
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{data.title}</StyledTableCell>
+                            <StyledTableCell align="right">{data.description}</StyledTableCell>
+                            <StyledTableCell align="right">{data.category}</StyledTableCell>
+                            <StyledTableCell align="right">
+                                <FormatDate date={data.published_at}>
+                                </FormatDate>
+                            </StyledTableCell>
+                            <StyledTableCell align="right">{data.country}</StyledTableCell>     
+                        </StyledTableRow>
+                    ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
-
+        
     )
 }
 
