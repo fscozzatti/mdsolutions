@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
+import FormatDate from './../FormatDate'
 
 
 const GridDetail = ({author, category, country, description, published_at, title}) => {
@@ -25,7 +26,7 @@ const GridDetail = ({author, category, country, description, published_at, title
                             {description}
                         </Grid>
                         <Grid className='col-md-1 divDetail' item>
-                            {published_at}
+                            <FormatDate date={published_at}></FormatDate>
                         </Grid>
                         <Grid className='col-md-3 divDetail' item>
                             {title}

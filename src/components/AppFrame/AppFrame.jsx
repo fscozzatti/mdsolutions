@@ -11,13 +11,13 @@ const AppFrame = ({children}) => {
     return (
         <Grid container
             justify="center">
-            <AppBar position="static">
-                <Toolbar variant="dense">
-                    <Typography variant="h6" color="inherit">
-                        Code Challenge MD Digital Solutions
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+                <AppBar position="static">
+                    <Toolbar variant="dense">
+                        <Typography variant="h6" color="inherit">
+                            Code Challenge MD Digital Solutions
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
             <Grid item
                 xs={12}
                 sm={12}
