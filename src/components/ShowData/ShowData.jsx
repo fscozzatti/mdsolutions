@@ -8,14 +8,16 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import FormatDate from './../FormatDate'
-
+//material sacado de https://material-ui.com/es/components/tables/ y adaptado a la lógica del problema
 const StyledTableCell = withStyles((theme) => ({
     head: {
       backgroundColor: theme.palette.common.white,
       color: theme.palette.common.black,
+      border: "1px solid",
     },
     body: {
       fontSize: 14,
+      border: "1px solid",
     },
   }))(TableCell);
   
@@ -31,16 +33,16 @@ const StyledTableCell = withStyles((theme) => ({
 const ShowData = ({data}) => {
 
     return (
-        <div>
+        <div className="container-fluid py-1">
             <TableContainer>
-                <Table  className="" size="large">
+                <Table size="large">
                     <TableHead>
                         <TableRow>
                             <StyledTableCell>Author</StyledTableCell>
                             <StyledTableCell align="center">Title</StyledTableCell>
                             <StyledTableCell align="center">Description</StyledTableCell>
                             <StyledTableCell align="center">Category</StyledTableCell>
-                            <StyledTableCell align="center">Published_at</StyledTableCell>
+                            <StyledTableCell align="center">Published at</StyledTableCell>
                             <StyledTableCell align="center">Country</StyledTableCell>
                         </TableRow>
                     </TableHead>
