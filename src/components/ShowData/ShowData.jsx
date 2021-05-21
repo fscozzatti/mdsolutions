@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Table from '@material-ui/core/Table';
-import { withStyles } from '@material-ui/core/styles';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import Table from '@material-ui/core/Table'
+import { withStyles } from '@material-ui/core/styles'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import DownArrow from '@material-ui/icons/ArrowDropDown'
+import UpArrow from '@material-ui/icons/ArrowDropUp'
 import FormatDate from './../FormatDate'
 //material sacado de https://material-ui.com/es/components/tables/ y adaptado a la lógica del problema
 const StyledTableCell = withStyles((theme) => ({
@@ -30,20 +32,98 @@ const StyledTableCell = withStyles((theme) => ({
   }))(TableRow);
   
 
-const ShowData = ({data}) => {
+const ShowData = ({data, handleSort, columnToSort, sortDirection}) => {
 
     return (
         <div className="container-fluid py-1">
             <TableContainer>
-                <Table size="large">
+                <Table>
                     <TableHead>
                         <TableRow>
-                            <StyledTableCell>Author</StyledTableCell>
-                            <StyledTableCell align="center">Title</StyledTableCell>
-                            <StyledTableCell align="center">Description</StyledTableCell>
-                            <StyledTableCell align="center">Category</StyledTableCell>
-                            <StyledTableCell align="center">Published at</StyledTableCell>
-                            <StyledTableCell align="center">Country</StyledTableCell>
+                            <StyledTableCell>
+                                <div onClick={() => {handleSort("author")}}>
+                                    <span>
+                                        Author
+                                    </span>
+                                    {
+                                        columnToSort === "author" ? (
+                                            sortDirection === "asc" ? (<UpArrow/>
+                                                ) : (
+                                             <DownArrow/>)
+                                        ) : null
+                                    }
+                                </div>
+                            </StyledTableCell>
+                            <StyledTableCell align="center">
+                                <div onClick={() => {handleSort("title")}}>
+                                    <span>
+                                        Title
+                                    </span>
+                                    {
+                                        columnToSort === "title" ? (
+                                            sortDirection === "asc" ? (<UpArrow/>
+                                                ) : (
+                                             <DownArrow/>)
+                                        ) : null
+                                    }
+                                </div>
+                            </StyledTableCell>
+                            <StyledTableCell align="center">
+                                <div onClick={() => {handleSort("description")}}>
+                                    <span>
+                                        Description
+                                    </span>
+                                    {
+                                        columnToSort === "description" ? (
+                                            sortDirection === "asc" ? (<UpArrow/>
+                                                ) : (
+                                             <DownArrow/>)
+                                        ) : null
+                                    }
+                                </div>
+                            </StyledTableCell>
+                            <StyledTableCell align="center">
+                                <div onClick={() => {handleSort("category")}}>
+                                    <span>
+                                        Category
+                                    </span>
+                                    {
+                                        columnToSort === "category" ? (
+                                            sortDirection === "asc" ? (<UpArrow/>
+                                                ) : (
+                                             <DownArrow/>)
+                                        ) : null
+                                    }
+                                </div>
+                            </StyledTableCell>
+                            <StyledTableCell align="center">
+                                <div onClick={() => {handleSort("published_at")}}>
+                                    <span>
+                                        Published at
+                                    </span>
+                                    {
+                                        columnToSort === "published_at" ? (
+                                            sortDirection === "asc" ? (<UpArrow/>
+                                                ) : (
+                                             <DownArrow/>)
+                                        ) : null
+                                    }
+                                </div>
+                            </StyledTableCell>
+                            <StyledTableCell align="center">
+                                <div onClick={() => {handleSort("country")}}>
+                                    <span>
+                                        Country
+                                    </span>
+                                    {
+                                        columnToSort === "country" ? (
+                                            sortDirection === "asc" ? (<UpArrow/>
+                                                ) : (
+                                             <DownArrow/>)
+                                        ) : null
+                                    }
+                                </div>
+                            </StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -85,6 +165,9 @@ ShowData.propTypes = {
             url: PropTypes.string.isRequired,
         })
     ).isRequired,
+    handleSort: PropTypes.func.isRequired,
+    columnToSort: PropTypes.string.isRequired,
+    sortDirection: PropTypes.string.isRequired,
 }
 
 export default ShowData

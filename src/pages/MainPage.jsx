@@ -6,11 +6,14 @@ import ShowData from './../components/ShowData'
 
 
 
-const MainPage = ({data}) => {
+const MainPage = ({data, handleSort, columnToSort, sortDirection}) => {
     return (
         <AppFrame>
             <Paper elevation={3}>
-                <ShowData data={data}>
+                <ShowData data={data}
+                    handleSort={handleSort}
+                    columnToSort={columnToSort}
+                    sortDirection={sortDirection}>
                 </ShowData>
             </Paper>
         </AppFrame>
@@ -32,6 +35,9 @@ MainPage.propTypes = {
             url: PropTypes.string.isRequired,
         })
     ).isRequired,
+    handleSort: PropTypes.func.isRequired,
+    columnToSort: PropTypes.string.isRequired,
+    sortDirection: PropTypes.string.isRequired,
 }
 
 export default MainPage
