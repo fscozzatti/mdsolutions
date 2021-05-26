@@ -14,6 +14,10 @@ const MainPage = () => {
         history.push('/R2r4')
     }, [history]) 
 
+    const onClickHandlerR3 = useCallback(() => {
+        history.push('/R3')
+    }, [history]) 
+
     return (
         <AppFrame>
             <Paper elevation={3}>
@@ -30,7 +34,7 @@ const MainPage = () => {
                         <Button variant="contained" color="primary" onClick={() => onClickHandlerR2r4()}> R2 y R4 </Button>
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color="primary"> R3 </Button>
+                        <Button variant="contained" color="primary" onClick={() => onClickHandlerR3()}> R3 </Button>
                     </Grid>
                 </Grid>
             </Paper>
