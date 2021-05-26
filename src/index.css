@@ -18,3 +18,13 @@ code {
   border: 1px solid;
 }
 
+.container1 { position: relative; }
+.container1 img { display: block; }
+.container1 .fa-download { 
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+}
+
+

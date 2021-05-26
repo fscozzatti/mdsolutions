@@ -5,6 +5,8 @@ import { BrowserRouter as Router,
   Route } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import NotFoundPage from './pages/NotFoundPage'
+import R2r4 from './pages/R2r4'
+import R3 from './pages/R3'
 import useData from './hooks/useData'
 import orderBy from 'lodash/orderBy'
 
@@ -29,11 +31,17 @@ function App() {
     <Router>
       <Switch>
           <Route exact path="/">
-              <MainPage data={orderBy(data.data, columnToSort, sortDirection)}
+              <MainPage />
+          </Route>  
+          <Route path="/R2r4">
+              <R2r4 data={orderBy(data.data, columnToSort, sortDirection)}
               handleSort={(columnName) => {handleSort(columnName)}} 
               columnToSort={columnToSort} sortDirection={sortDirection}
               />
-          </Route>      
+          </Route> 
+          <Route path="/R3">
+              <R3 />
+          </Route> 
           <Route>
               <NotFoundPage />
           </Route>                                                           

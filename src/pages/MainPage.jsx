@@ -1,43 +1,45 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useCallback } from 'react'
+
+import {useHistory} from 'react-router-dom'
 import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
 import AppFrame from './../components/AppFrame'
-import ShowData from './../components/ShowData'
 
 
+const MainPage = () => {
+    const history = useHistory()
 
-const MainPage = ({data, handleSort, columnToSort, sortDirection}) => {
+    const onClickHandlerR2r4 = useCallback(() => {
+        history.push('/R2r4')
+    }, [history]) 
+
+    const onClickHandlerR3 = useCallback(() => {
+        history.push('/R3')
+    }, [history]) 
+
     return (
         <AppFrame>
             <Paper elevation={3}>
-                <ShowData data={data}
-                    handleSort={handleSort}
-                    columnToSort={columnToSort}
-                    sortDirection={sortDirection}>
-                </ShowData>
+                <Grid container
+                    direction="column"
+                    justify="center"
+                    alignItems="center" 
+                    spacing={5}          
+                >
+                    <Grid item>
+                        Welcome to challenge!!!
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" color="primary" onClick={() => onClickHandlerR2r4()}> R2 y R4 </Button>
+                    </Grid>
+                    <Grid item>
+                        <Button variant="contained" color="primary" onClick={() => onClickHandlerR3()}> R3 </Button>
+                    </Grid>
+                </Grid>
             </Paper>
         </AppFrame>
     )
-}
-
-MainPage.propTypes = {
-    data: PropTypes.arrayOf(
-        PropTypes.shape({
-            author: PropTypes.string,
-            category: PropTypes.string.isRequired,
-            country: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-            image: PropTypes.string,
-            language: PropTypes.string.isRequired,
-            published_at: PropTypes.string.isRequired,
-            source: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            url: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-    handleSort: PropTypes.func.isRequired,
-    columnToSort: PropTypes.string.isRequired,
-    sortDirection: PropTypes.string.isRequired,
 }
 
 export default MainPage
