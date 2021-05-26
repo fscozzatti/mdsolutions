@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import ReactPlayer from 'react-player'
 import leccion from './../../images/Leccion.jfif'
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
+import { Modal, ModalBody, ModalFooter } from 'reactstrap'
 
 
 const ShowVideo = () => {
+    const [open, setOpen] = useState(false)
+
+    const openModal = () =>{
+        setOpen(!open)
+    }
+
+    const modalStyle = {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)", 
+    }
+
     return (
             <div className= "container-fluid py-3">
                 <Grid container 
@@ -16,7 +31,7 @@ const ShowVideo = () => {
                     xs={12}
                     sm={6}                    
                     >
-                    <div class="container1">
+                    <div class="container1" onClick={() => openModal()}>
                         <img src={leccion} width="100%" height="100%"></img>
                         <a>
                             <i class="fas fa-download" >
@@ -57,6 +72,19 @@ const ShowVideo = () => {
                         </div>
                     </Grid>
                 </Grid>
+                <Modal isOpen={open} style={modalStyle}>
+                    <ModalBody>
+                        <ReactPlayer url='https://www.youtube.com/watch?v=PABq5NEMhuU&ab_channel=RODOLFOROBLEDORODOLFOROBLEDO'
+                                width='100%'
+                                height='100%'
+                                controls
+                                playing
+                                />
+                        </ModalBody>
+                    <ModalFooter>
+                        <Button variant="contained" onClick={() => openModal()} >Cerrar</Button>
+                    </ModalFooter>
+                </Modal>
             </div>
     )
 }
